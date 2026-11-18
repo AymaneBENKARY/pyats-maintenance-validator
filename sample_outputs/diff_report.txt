@@ -1,0 +1,334 @@
+
+================ vios1 ================
+ bgp:
+  info:
+   instance:
+    default:
+     vrf:
+      default:
+       neighbor:
+        2.2.2.2:
+         bgp_neighbor_counters:
+          messages:
+           received:
+-           keepalives: 31
++           keepalives: 32
+           sent:
+-           keepalives: 30
++           keepalives: 32
+  routes_per_peer:
+   instance:
+    default:
+     vrf:
+      default:
+       neighbor:
+        2.2.2.2:
+         address_family:
+          ipv4 unicast:
+-          msg_rcvd: 33
++          msg_rcvd: 34
+-          msg_sent: 34
++          msg_sent: 36
+-          tbl_ver: 3
++          tbl_ver: 1
+-          up_down: 00:26:16
++          up_down: 00:27:43
+-          advertised:
+-           192.168.10.0:
+-            index:
+-             1:
+-              localprf: 0
+-              next_hop: 0.0.0.0
+-              origin_codes: i
+-              status_codes: *>
+-              weight: 32768
+-           192.168.20.0:
+-            index:
+-             1:
+-              localprf: 0
+-              next_hop: 0.0.0.0
+-              origin_codes: i
+-              status_codes: *>
+-              weight: 32768
+  table:
+   instance:
+    default:
+     vrf:
+      default:
+       address_family:
+        ipv4 unicast:
+         prefixes:
+          192.168.10.0/24:
+           index:
+            1:
+-            update_group: 1
+          192.168.20.0/24:
+           index:
+            1:
+-            update_group: 1
+ interface:
+  info:
+   GigabitEthernet0/1:
+-   enabled: True
++   enabled: False
+-   oper_status: up
++   oper_status: down
+ ospf:
+  info:
+   vrf:
+    default:
+     address_family:
+      ipv4:
+       instance:
+        1:
+         areas:
+          0.0.0.0:
+           database:
+            lsa_types:
+             1:
+              lsas:
+               1.1.1.1 1.1.1.1:
+                ospfv2:
+                 body:
+                  router:
+                   links:
+-                   10.0.0.1:
+-                    link_data: 10.0.0.1
+-                    link_id: 10.0.0.1
+-                    topologies:
+-                     0:
+-                      metric: 1
+-                      mt_id: 0
+-                    type: transit network
+-                  num_of_links: 2
++                  num_of_links: 1
+                 header:
+-                 checksum: 0x11EA
++                 checksum: 0xC65A
+-                 length: 48
++                 length: 36
+-                 seq_num: 80000005
++                 seq_num: 80000006
+             2:
+              lsas:
+-              10.0.0.1 1.1.1.1:
+-               adv_router: 1.1.1.1
+-               lsa_id: 10.0.0.1
+-               ospfv2:
+-                body:
+-                 network:
+-                  attached_routers:
+-                   1.1.1.1:
+-                   2.2.2.2:
+-                  network_mask: 255.255.255.252
+-                header:
+-                 adv_router: 1.1.1.1
+-                 age: 547
+-                 checksum: 0x67B9
+-                 length: 32
+-                 lsa_id: 10.0.0.1
+-                 option: None
+-                 seq_num: 80000002
+-                 type: 2
+           interfaces:
+            GigabitEthernet0/1:
+-            enable: True
++            enable: False
+-            state: dr
++            state: down
+-            bdr_ip_addr: 10.0.0.2
+-            bdr_router_id: 2.2.2.2
+-            dr_ip_addr: 10.0.0.1
+-            dr_router_id: 1.1.1.1
+-            lls: True
+-            neighbors:
+-             2.2.2.2:
+-              address: 10.0.0.2
+-              bdr_ip_addr: 10.0.0.2
+-              dead_timer: 00:00:35
+-              dr_ip_addr: 10.0.0.1
+-              neighbor_router_id: 2.2.2.2
+-              state: full
+-              statistics:
+-               nbr_event_count: 6
+-               nbr_retrans_qlen: 0
+-            passive: False
+           statistics:
+-           area_scope_lsa_cksum_sum: 0x01BE17
++           area_scope_lsa_cksum_sum: 0x020ACE
+-           area_scope_lsa_count: 5
++           area_scope_lsa_count: 4
+-           spf_runs_count: 9
++           spf_runs_count: 10
+ routing:
+  info:
+   vrf:
+    default:
+     address_family:
+      ipv4:
+       routes:
+-       10.0.0.0/30:
+-        active: True
+-        next_hop:
+-         outgoing_interface:
+-          GigabitEthernet0/1:
+-           outgoing_interface: GigabitEthernet0/1
+-        route: 10.0.0.0/30
+-        source_protocol: connected
+-        source_protocol_codes: C
+-       10.0.0.1/32:
+-        active: True
+-        next_hop:
+-         outgoing_interface:
+-          GigabitEthernet0/1:
+-           outgoing_interface: GigabitEthernet0/1
+-        route: 10.0.0.1/32
+-        source_protocol: local
+-        source_protocol_codes: L
+-       10.0.1.0/30:
+-        active: True
+-        metric: 2
+-        next_hop:
+-         next_hop_list:
+-          1:
+-           index: 1
+-           next_hop: 10.0.0.2
+-           outgoing_interface: GigabitEthernet0/1
+-           updated: 00:40:23
+-        route: 10.0.1.0/30
+-        route_preference: 110
+-        source_protocol: ospf
+-        source_protocol_codes: O
+-       2.2.2.2/32:
+-        active: True
+-        metric: 2
+-        next_hop:
+-         next_hop_list:
+-          1:
+-           index: 1
+-           next_hop: 10.0.0.2
+-           outgoing_interface: GigabitEthernet0/1
+-           updated: 00:40:11
+-        route: 2.2.2.2/32
+-        route_preference: 110
+-        source_protocol: ospf
+-        source_protocol_codes: O
+-       3.3.3.3/32:
+-        active: True
+-        metric: 3
+-        next_hop:
+-         next_hop_list:
+-          1:
+-           index: 1
+-           next_hop: 10.0.0.2
+-           outgoing_interface: GigabitEthernet0/1
+-           updated: 00:36:37
+-        route: 3.3.3.3/32
+-        route_preference: 110
+-        source_protocol: ospf
+-        source_protocol_codes: O
+
+================ vios2 ================
+ bgp:
+  info:
+   instance:
+    default:
+     vrf:
+      default:
+       neighbor:
+        1.1.1.1:
+         bgp_neighbor_counters:
+          messages:
+           received:
+-           keepalives: 30
++           keepalives: 31
+           sent:
+-           keepalives: 31
++           keepalives: 33
+        3.3.3.3:
+         bgp_neighbor_counters:
+          messages:
+           received:
+-           keepalives: 30
++           keepalives: 32
+           sent:
+-           keepalives: 30
++           keepalives: 31
+  routes_per_peer:
+   instance:
+    default:
+     vrf:
+      default:
+       neighbor:
+        1.1.1.1:
+         address_family:
+          ipv4 unicast:
+-          msg_rcvd: 34
++          msg_rcvd: 35
+-          msg_sent: 33
++          msg_sent: 35
+-          up_down: 00:26:17
++          up_down: 00:27:45
+        3.3.3.3:
+         address_family:
+          ipv4 unicast:
+-          msg_rcvd: 32
++          msg_rcvd: 34
+-          msg_sent: 32
++          msg_sent: 33
+-          up_down: 00:26:14
++          up_down: 00:27:42
+ routing:
+  info:
+   vrf:
+    default:
+     address_family:
+      ipv4:
+       routes:
+-       1.1.1.1/32:
+-        active: True
+-        metric: 2
+-        next_hop:
+-         next_hop_list:
+-          1:
+-           index: 1
+-           next_hop: 10.0.0.1
+-           outgoing_interface: GigabitEthernet0/1
+-           updated: 00:40:41
+-        route: 1.1.1.1/32
+-        route_preference: 110
+-        source_protocol: ospf
+-        source_protocol_codes: O
+
+================ vios3 ================
+ bgp:
+  info:
+   instance:
+    default:
+     vrf:
+      default:
+       neighbor:
+        2.2.2.2:
+         bgp_neighbor_counters:
+          messages:
+           received:
+-           keepalives: 30
++           keepalives: 31
+           sent:
+-           keepalives: 30
++           keepalives: 32
+  routes_per_peer:
+   instance:
+    default:
+     vrf:
+      default:
+       neighbor:
+        2.2.2.2:
+         address_family:
+          ipv4 unicast:
+-          msg_rcvd: 31
++          msg_rcvd: 33
+-          msg_sent: 32
++          msg_sent: 34
+-          up_down: 00:26:13
++          up_down: 00:27:40
