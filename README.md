@@ -22,7 +22,7 @@ pyats-maintenance-validator/
 ├── README.md
 ├── requirements.txt
 ├── validator.py               # Main CLI tool (pre / post / diff)
-├── testbed.yaml       # Sanitized device inventory template
+├── testbed.yaml              
 ├── lab/
 │   ├── topology.clab.yml      # 3-router Containerlab definition
 │   └── topology_diagram.png   # Network diagram
