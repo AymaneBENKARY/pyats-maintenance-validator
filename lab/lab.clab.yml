@@ -5,18 +5,15 @@ topology:
     vios1:
       kind: cisco_vios
       image: vrnetlab/cisco_vios:157-3.M3
-    #      startup-config: ~/startup_config/vios1.cfg
 
     vios2:
       kind: cisco_vios
       image: vrnetlab/cisco_vios:157-3.M3
-    #      startup-config: ~/startup_config/vios1.cfg
 
     vios3:
       kind: cisco_vios
       image: vrnetlab/cisco_vios:157-3.M3
-  #      startup-config: ~/startup_config/vios2.cfg
 
   links:
-    - endpoints: [ "vios1:eth1", "vios2:eth1" ]
-    - endpoints: [ "vios2:eth2", "vios3:eth1" ]
+    - endpoints: ["vios1:eth1", "vios2:eth1"]
+    - endpoints: ["vios2:eth2", "vios3:eth1"]

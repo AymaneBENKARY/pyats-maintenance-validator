@@ -8,7 +8,7 @@ devices:
     connections:
       cli:
         protocol: ssh
-        ip: 172.20.20.2
+        ip: 172.20.20.2 # Replace with the actual IP address of vios1
     credentials:
       default:
         username: admin
@@ -19,7 +19,7 @@ devices:
     connections:
       cli:
         protocol: ssh
-        ip: 172.20.20.3
+        ip: 172.20.20.3 # Replace with the actual IP address of vios2
     credentials:
       default:
         username: admin
@@ -30,7 +30,7 @@ devices:
     connections:
       cli:
         protocol: ssh
-        ip: 172.20.20.4
+        ip: 172.20.20.4 # Replace with the actual IP address of vios3
     credentials:
       default:
         username: admin
